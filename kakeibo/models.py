@@ -39,10 +39,11 @@ class Manage(models.Model):
         memo : メモ(カテゴリーを具体的に)
     """
     #フィールドの定義
+    number=0
     date = models.DateField(default=timezone.now)
     category = models.ForeignKey(Category,on_delete=models.CASCADE) #categoryのクラスで登録したcategoryをここで表示させ、選択式にする
     cost = models.IntegerField() #数字のみ打ち込む
     memo = models.TextField()
 
     def __str__(self):
-        return self.date,self.category #カテゴリー名を表示させる
+        return "{},{}".format(self.category,str(self.cost))

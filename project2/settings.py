@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,16 @@ WSGI_APPLICATION = 'project2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "djangodb",
+        'USER': "user",
+        'PASSWORD': 'user',
+        'HOST': '10.0.0.3',
+        'PORT': '3306',
+        'ATOMIC_REQUEST': True,
+        'OPTIONS':{
+            'charset': 'utf8mb4',
+        },
     }
 }
 
@@ -119,3 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Autherntication
+LOGIN_REDIRECT_URL ="/"
+LOGOUT_REDIRECT_URL="/"
