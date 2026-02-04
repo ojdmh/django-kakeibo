@@ -1,0 +1,21 @@
+"""
+    Accounts 更新フォームの定義
+
+    Filename Forms,py
+    Date: 2026.02.04
+    Written By Hamada Jo
+
+"""
+from django.forms import ModelForm
+from django.contrib.auth.models import User
+
+class UserUpdateForm(ModelForm):
+    """ユーザー情報更新フォーム"""
+    class Meta:
+        model=User
+        fields=('last_name','first_name')
+
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class']='form-control'
